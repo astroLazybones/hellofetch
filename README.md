@@ -1,4 +1,4 @@
-An open source and rust based neofetch alternative
+A rust based neofetch alternative
 <br>
 <br>
 Current Issues:
