@@ -17,7 +17,7 @@ fn main() {
     println!("hellofetch");
     println!("");
     
-    let mut sys = System::new_all();
+    //let mut sys = System::new_all();
     
     let name = System::name().unwrap();
     let ver = System::os_version().unwrap();
@@ -42,8 +42,8 @@ fn main() {
     //let se = "Boot Time:".bold().blue();
     //println!("{} {}",se, System::boot_time());
     
-    let se = "Memory:".bold().blue();
-    println!("{} {} / {}", se, ByteSize(sys.used_memory()), ByteSize(sys.total_memory()));
+    //let se = "Memory:".bold().blue();
+    //println!("{} {} / {}", se, ByteSize(sys.used_memory()), ByteSize(sys.total_memory()));
     
     let disks = Disks::new_with_refreshed_list();
     for disk in disks.list() {
