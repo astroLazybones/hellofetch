@@ -1,5 +1,5 @@
 use sysinfo::{
-    Components, Disks, Networks, System,
+    Components, Disks, Networks,// System,
 };
 use bytesize::ByteSize;
 use colored::Colorize;
