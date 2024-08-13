@@ -1,5 +1,5 @@
 use sysinfo::{
-    Components, Disks, Networks,// System,
+    Components, Disks, Networks, System,
 };
 use bytesize::ByteSize;
 use colored::Colorize;
@@ -8,8 +8,6 @@ use fs2::{
 };
 use compound_duration::format_dhms;
 use std::time::Instant;
-
-
 
 
 fn main() {
