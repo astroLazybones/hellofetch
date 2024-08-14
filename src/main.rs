@@ -11,16 +11,13 @@ use std::time::Instant;
 
 
 fn main() {
-    println!("");
-    println!("hellofetch");
-    println!("");
-    
-    //let mut sys = System::new_all();
-    
     let name = System::name().unwrap();
     let ver = System::os_version().unwrap();
-    let se = "";
-    
+    let username = whoami::username();
+    let hostname = System::host_name().unwrap();
+    let fullnaming = format!("{}@{}", username.bold().blue(), hostname.bold().blue());
+    let namelen = format!("{}@{}", username, hostname).len();
+    println!("\n{}\n{}", fullnaming, "-".repeat(namelen));
     
     let se = "OS".bold().blue();
     let possible_arch = System::cpu_arch().unwrap();
