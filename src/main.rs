@@ -40,11 +40,11 @@ fn main() {
     //let se = "Memory".bold().blue();
     //println!("{}: {} / {}", se, ByteSize(sys.used_memory()), ByteSize(sys.total_memory()));
     
-    let disks = Disks::new_with_refreshed_list();
+    /* let disks = Disks::new_with_refreshed_list();
     for disk in disks.list() {
         let se = ("Disk").bold().blue();
         let edede = format!("({:?})", disk.mount_point()).bold().blue();
         println!("{} {}: {} / {}", se, edede, ByteSize(disk.total_space() - disk.available_space()),ByteSize(disk.total_space()),);
-    }
+    } */
     println!("");
 }
