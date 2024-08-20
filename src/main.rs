@@ -3,9 +3,10 @@
 use compound_duration::format_dhms;
 //use fs2::{available_space, total_space};
 //use std::time::Instant;
+use std::env;
 use sysinfo::System; //Components, Disks, Networks, System};
 use whoami;
-use std::env;
+
 
 fn main() {
     // let cyan ="\x1b[0;36m";
@@ -13,21 +14,32 @@ fn main() {
     let reset_col = "\x1b[0m";
     let cybold = "\x1b[1;36m";
 
-    let name = System::name().unwrap();
-    let ver = System::os_version().unwrap();
+    let name = System::name().unwrap_or_else(|| "Unknown".to_string());
+    let ver = System::os_version().unwrap_or_else(|| "Unknown".to_string());
     let username = whoami::username();
-    let hostname = System::host_name().unwrap();
-    let fullnaming = format!("{}{}{}@{}{}{}", cybold, username, reset_col, cybold, hostname, reset_col);
+    let hostname = System::host_name().unwrap_or_else(|| "Unknown".to_string());
+    let fullnaming = format!(
+        "{}{}{}@{}{}{}",
+        cybold, username, reset_col, cybold, hostname, reset_col
+    );
     let namelen = format!("{}@{}", username, hostname).len();
-    let possible_arch = System::cpu_arch().unwrap();
-    let kernel = System::kernel_version().unwrap();
+    let possible_arch = System::cpu_arch().unwrap_or_else(|| "Unknown".to_string());
+    let kernel = System::kernel_version().unwrap_or_else(|| "Unknown".to_string());
     let osname = env::consts::OS;
 
     println!("\n{}\n{}", fullnaming, "-".repeat(namelen));
-    println!("{}OS{}: {} {} {:?}", cybold, reset_col, name, ver, possible_arch);
+    println!(
+        "{}OS{}: {} {} {:?}",
+        cybold, reset_col, name, ver, possible_arch
+    );
     println!("{}Host{}: {}", cybold, reset_col, hostname);
     println!("{}Kernel{}: {} {}", cybold, reset_col, osname, kernel);
-    println!("{}Uptime{}: {}\n", cybold, reset_col, format_dhms(System::uptime()));
+    println!(
+        "{}Uptime{}: {}\n",
+        cybold,
+        reset_col,
+        format_dhms(System::uptime())
+    );
 
     //let se = "Boot Time".bold().blue();
     //println!("{}: {}",se, System::boot_time());
