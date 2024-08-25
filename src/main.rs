@@ -3,10 +3,10 @@
 use compound_duration::format_dhms;
 //use fs2::{available_space, total_space};
 //use std::time::Instant;
+use resolution;
 use std::env;
 use sysinfo::System; //Components, Disks, Networks, System};
 use whoami;
-
 
 fn main() {
     // let cyan ="\x1b[0;36m";
@@ -17,6 +17,7 @@ fn main() {
     let name = System::name().unwrap_or_else(|| "Unknown".to_string());
     let ver = System::os_version().unwrap_or_else(|| "Unknown".to_string());
     let username = whoami::username();
+    let screenres = resolution::current_resolution().unwrap();
     let hostname = System::host_name().unwrap_or_else(|| "Unknown".to_string());
     let fullnaming = format!(
         "{}{}{}@{}{}{}",
@@ -35,10 +36,14 @@ fn main() {
     println!("{}Host{}: {}", cybold, reset_col, hostname);
     println!("{}Kernel{}: {} {}", cybold, reset_col, osname, kernel);
     println!(
-        "{}Uptime{}: {}\n",
+        "{}Uptime{}: {}",
         cybold,
         reset_col,
         format_dhms(System::uptime())
+    );
+    println!(
+        "{}Display{}: {:?}x{:?}\n",
+        cybold, reset_col, &screenres.0, &screenres.1,
     );
 
     //let se = "Boot Time".bold().blue();
