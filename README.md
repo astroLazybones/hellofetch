@@ -4,3 +4,4 @@ A rust based neofetch alternative
 Current Issues:
 <br>
 No storage/ram output because it was returning incorrect values
+No mainboard name detection
