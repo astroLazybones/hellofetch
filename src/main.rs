@@ -17,7 +17,7 @@ fn main() {
     let name = System::name().unwrap_or_else(|| "Unknown".to_string());
     let ver = System::os_version().unwrap_or_else(|| "Unknown".to_string());
     let username = whoami::username();
-    let screenres = resolution::current_resolution().unwrap();
+    let screenres = resolution::current_resolution().unwrap_or((0, 0));
     let hostname = System::host_name().unwrap_or_else(|| "Unknown".to_string());
     let fullnaming = format!(
         "{}{}{}@{}{}{}",
